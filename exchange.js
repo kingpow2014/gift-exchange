@@ -28,7 +28,10 @@ const quickExchange = (people = []) => {
 
     const result = {};
     const shuffledPeople = renameDuplicate(people);
-    shuffledPeople.sort(() => Math.random() - 0.5);
+    for (let i = shuffledPeople.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [shuffledPeople[i], shuffledPeople[j]] = [shuffledPeople[j], shuffledPeople[i]];
+    }
 
     let i = length;
     while (--i) {
